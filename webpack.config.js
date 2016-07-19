@@ -1,5 +1,5 @@
 const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 module.exports = {
 	devtool:'eval',
@@ -16,16 +16,8 @@ module.exports = {
     extentions: ['.png','.js','.less','.scss'] /* add other extentions for webpack to look for*/
   },
 	plugins: [
-		// kills the compilation upon an error.
-		// this keeps the outputed bundle **always** valid
     new webpack.NoErrorsPlugin(),
-    new HtmlWebpackPlugin(
-      {
-        template:'index.html',
-        hash: true,
-        // favicon: 'favicon.ico',
-      }
-    ),
+    new WebpackNotifierPlugin()
 	],
 	module:{
 		loaders:[
